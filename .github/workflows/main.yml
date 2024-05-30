@@ -3,17 +3,36 @@ name: ci:cd
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-test-deploy:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
-          - fedora-latest
-          - arch-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.22
+
+      - name: Install Yandex Cloud Go SDK
+        run: go get github.com/yandex-cloud/go-genproto/yandex/cloud/...
+
+      - name: Initialize Terraform
+        run: terraform init -input=false
+        working-directory: /terraform/files
+
+      - name: Plan Terraform changes
+        run: terraform plan -out=terraform.plan -input=false
+        working-directory: /terraform/files
+
+      - name: Apply Terraform changes
+        run: terraform apply -auto-approve -input=false
+        working-directory: /terraform/files
+
+      - name: Output Terraform outputs
+        run: terraform output
+        working-directory: /terraform
