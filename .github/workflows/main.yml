@@ -1,0 +1,19 @@
+name: ci:cd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test-deploy:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+          - fedora-latest
+          - arch-latest
