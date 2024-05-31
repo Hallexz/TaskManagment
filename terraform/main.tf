@@ -64,7 +64,7 @@ resource "yandex_vpc_subnet" "default" {
 }
 
 data "yandex_compute_image" "ubuntu" {
-  family = "ubuntu-2004-lts"
+  family = "ubuntu"
 }
 
 resource "yandex_compute_instance" "default" {
