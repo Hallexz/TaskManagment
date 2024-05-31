@@ -21,7 +21,7 @@ variable "network_name" {
 }
 
 variable "subnet_name" {
-  description = "Subnet name"
+  description = "pum"
   type        = string
   default     = "my-subnet"
 }
@@ -36,7 +36,7 @@ terraform {
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
-      version = "0.83.0" # Используйте последнюю доступную версию
+      version = "0.83.0"
     }
   }
 }
@@ -50,7 +50,7 @@ provider "yandex" {
 
 resource "yandex_vpc_network" "default" {
   name        = var.network_name
-  description = "Пример сети"
+  description = "example of a network"
   labels      = {
     "key" = "value"
   }
@@ -64,7 +64,7 @@ resource "yandex_vpc_subnet" "default" {
 }
 
 data "yandex_compute_image" "ubuntu_image" {
-  family = "ubuntu"
+  family = "ubuntu-2004-lts"
 }
 
 resource "yandex_compute_instance" "default" {
