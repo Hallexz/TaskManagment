@@ -21,9 +21,9 @@ jobs:
       - name: Install Yandex Cloud Go SDK
         run: go get github.com/yandex-cloud/go-genproto/yandex/cloud/...
 
-      - name: Initialize Terraform
-        run: terraform init -input=false
-        working-directory: terraform
+  #    - name: Initialize Terraform
+  #      run: terraform init -input=false
+  #      working-directory: terraform
 
   #    - name: Create Terraform variables file
   #      run: |
