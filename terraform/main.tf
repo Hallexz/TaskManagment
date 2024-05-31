@@ -25,7 +25,7 @@ variable "zone" {
 }
 
 
-provider "yandex-cloud/yandex" {
+provider "yandex" {  # Simplified provider name
   token = var.yandex_cloud_token
 }
 
@@ -65,7 +65,7 @@ resource "yandex_compute_instance" "default" {
     network_id = yandex_network.default.id
     subnet_id = yandex_network_subnet.default.id
     nat_ip {
-      address_type = "external"
+      address_type = "external" # Добавляем адрес_тип
     }
   }
 
