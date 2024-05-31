@@ -25,21 +25,21 @@ jobs:
         run: terraform init -input=false
         working-directory: terraform
 
-      - name: Create Terraform variables file
-        run: |
-          echo "yandex_cloud_token = \"${{ secrets.YANDEX_CLOUD_TOKEN }}\"" >> terraform.tfvars
-          echo "yandex_cloud_id = \"${{ secrets.YANDEX_CLOUD_ID }}\"" >> terraform.tfvars
-          echo "yandex_folder_id = \"${{ secrets.YANDEX_FOLDER_ID }}\"" >> terraform.tfvars
-        working-directory: terraform
+  #    - name: Create Terraform variables file
+  #      run: |
+  #        echo "yandex_cloud_token = \"${{ secrets.YANDEX_CLOUD_TOKEN }}\"" >> terraform.tfvars
+  #        echo "yandex_cloud_id = \"${{ secrets.YANDEX_CLOUD_ID }}\"" >> terraform.tfvars
+  #        echo "yandex_folder_id = \"${{ secrets.YANDEX_FOLDER_ID }}\"" >> terraform.tfvars
+  #      working-directory: terraform
 
-      - name: Plan Terraform changes
-        run: terraform plan -out=terraform.plan -input=false -var-file=terraform.tfvars
-        working-directory: terraform
+  #    - name: Plan Terraform changes
+  #      run: terraform plan -out=terraform.plan -input=false -var-file=terraform.tfvars
+  #      working-directory: terraform
 
-      - name: Apply Terraform changes
-        run: terraform apply -auto-approve -input=false
-        working-directory: terraform
+  #    - name: Apply Terraform changes
+  #      run: terraform apply -auto-approve -input=false
+  #      working-directory: terraform
 
-      - name: Output Terraform outputs
-        run: terraform output
-        working-directory: terraform
+  #    - name: Output Terraform outputs
+  #      run: terraform output
+  #      working-directory: terraform
