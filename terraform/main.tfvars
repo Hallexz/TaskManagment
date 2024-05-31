@@ -1,0 +1,1 @@
+yandex_cloud_token = "${{ secrets.YANDEX_CLOUD_TOKEN }}"
