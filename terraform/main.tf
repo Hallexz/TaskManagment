@@ -25,8 +25,13 @@ variable "zone" {
 }
 
 
-provider "yandex" {  # Simplified provider name
-  token = var.yandex_cloud_token
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+      version = "0.83.0"
+    }
+  }
 }
 
 
@@ -65,7 +70,7 @@ resource "yandex_compute_instance" "default" {
     network_id = yandex_network.default.id
     subnet_id = yandex_network_subnet.default.id
     nat_ip {
-      address_type = "external" # Добавляем адрес_тип
+      address_type = "external"
     }
   }
 
