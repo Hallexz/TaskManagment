@@ -49,9 +49,9 @@ provider "yandex" {
 }
 
 resource "yandex_vpc_network" "default" {
-  name = var.network_name
+  name        = var.network_name
   description = "Пример сети"
-  labels = {
+  labels      = {
     "key" = "value"
   }
 }
@@ -63,7 +63,7 @@ resource "yandex_vpc_subnet" "default" {
   zone           = var.zone
 }
 
-data "yandex_compute_image" "ubuntu" {
+data "yandex_compute_image" "ubuntu_image" {
   family = "ubuntu"
 }
 
@@ -78,7 +78,7 @@ resource "yandex_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image_id = data.yandex_compute_image.ubuntu.id
+      image_id = data.yandex_compute_image.ubuntu_image.image_id
       type     = "network-hdd"
       size     = 10
     }
