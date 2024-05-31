@@ -23,15 +23,15 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init -input=false
-        working-directory: /terraform/files
+        working-directory: /terraform
 
       - name: Plan Terraform changes
         run: terraform plan -out=terraform.plan -input=false
-        working-directory: /terraform/files
+        working-directory: /terraform
 
       - name: Apply Terraform changes
         run: terraform apply -auto-approve -input=false
-        working-directory: /terraform/files
+        working-directory: /terraform
 
       - name: Output Terraform outputs
         run: terraform output
